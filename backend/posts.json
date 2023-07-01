@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Me",
+        "content": "ozuess what",
+        "author": "Hi",
+        "date": "2022-12-30",
+        "id": 4,
+        "comments": [
+            {
+                "content": "Good Job",
+                "author": "Jack",
+                "id": 1
+            },
+            {
+                "content": "Good work",
+                "author": "Jasmine",
+                "id": 3
+            }
+        ]
+    },
+    {
+        "title": "You",
+        "content": "Dozuess what",
+        "author": "Jean",
+        "date": "2023-07-04",
+        "id": 5,
+        "comments": []
+    },
+    {
+        "title": "first b9.1 post",
+        "content": "ozuess what",
+        "author": "Help",
+        "date": "2023-07-01",
+        "id": 7,
+        "comments": []
+    },
+    {
+        "id": 10,
+        "title": "You",
+        "content": "Dozuess what",
+        "comments": [],
+        "date": "2023-07-01"
+    }
+]
