@@ -43,7 +43,6 @@ def write_posts_to_file(posts):
 def validate_posts(post):
     """Validate the fields of a post."""
     if "title" not in post or len(post['title']) == 0:
-        print(len(post['title']))
         return "title is missing"
     elif "content" not in post or len(post['content']) == 0:
         return "content is missing"
@@ -83,8 +82,10 @@ def handle_post():
         post = {'id': post_id,
                 'title': post['title'],
                 'content': post['content'],
+                'author': post['author'],
                 'comments': [],
-                'date': formatted_date
+                'date': formatted_date,
+                'likes': 0
                 }
         posts.append(post)
         write_posts_to_file(posts)
@@ -152,8 +153,24 @@ def update_post(post_id):
         "title": f"{post['title']}",
         "content": f"{post['content']}",
         "author": f"{post['author']}",
-        "date": f"{post['date']}"
+        "date": f"{post['date']}",
+        "likes": f"{int(post['likes'])}"
     }), 200
+
+
+def filter_posts(posts, search_query):
+    """Filter posts based on a search query."""
+    if not search_query:
+        return posts
+    filtered_posts = []
+    for post in posts:
+        title = post['title'].lower()
+        content = post['content'].lower()
+        author = post['author'].lower()
+        date = datetime.datetime.strptime(post['date'], '%Y-%m-%d').date().strftime('%B %d, %Y')
+        if search_query.lower() in title or search_query.lower() in content or search_query.lower() in author or search_query in date:
+            filtered_posts.append(post)
+    return filtered_posts
 
 
 @app.route('/api/posts/search', methods=['GET'])
@@ -164,7 +181,14 @@ def search_post():
     content = request.args.get('content')
     author = request.args.get('author')
     date = request.args.get('date')
+    search_query = request.args.get('q')
+    field = request.args.get('sort')
+    direction = request.args.get('direction')
     found_posts = []
+    if search_query:
+        filtered_posts = filter_posts(posts, search_query)
+        sorted_posts = sorting_posts(filtered_posts, field, direction)
+        return jsonify(sorted_posts)
     if title:
         found_posts = list(post for post in posts if title in post['title'])
     if content:
@@ -188,6 +212,7 @@ def add_comment(post_id):
     comment = request.get_json()
     comment_id = max(comment['id'] for comment in post['comments']) + 1 if post['comments'] else 1
     comment['id'] = comment_id
+    comment['likes'] = 0
     post['comments'].append(comment)
     posts[post_index] = post
     write_posts_to_file(posts)
@@ -209,6 +234,30 @@ def delete_comment(post_id, comment_id):
     posts[post_index] = post
     write_posts_to_file(posts)
     return jsonify({"message": f"Comment with id {comment_id} has been deleted successfully."}), 200
+
+
+@app.route('/api/posts/<int:post_id>/like', methods=['POST'])
+def update_likes(post_id):
+    posts = read_posts_from_file()
+    post = find_post_by_id(post_id)
+    post_index = posts.index(post)
+    post['likes'] = int(post['likes'] + 1)
+    posts[post_index] = post
+    write_posts_to_file(posts)
+    return jsonify({"message": f"Post liked +1"}), 200
+
+
+@app.route('/api/posts/<int:post_id>/comments/<int:comment_id>/like', methods=['POST'])
+def update_comments_likes(post_id, comment_id):
+    posts = read_posts_from_file()
+    post = find_post_by_id(post_id)
+    post_index = posts.index(post)
+    comment = next((comment for comment in post['comments'] if comment['id'] == comment_id), None)
+    comment['likes'] = int(comment['likes'] + 1)
+    posts[post_index] = post
+    write_posts_to_file(posts)
+    return jsonify({"message": f"Post liked +1"}), 200
+
 
 
 if __name__ == '__main__':

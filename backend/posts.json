@@ -1,44 +1,90 @@
 [
     {
-        "title": "Me",
-        "content": "ozuess what",
-        "author": "Hi",
+        "title": "One of my firsts post",
+        "content": "Let's see what is gonna happen now after updates",
+        "author": "Ace",
         "date": "2022-12-30",
         "id": 4,
         "comments": [
             {
                 "content": "Good Job",
                 "author": "Jack",
-                "id": 1
+                "id": 1,
+                "likes": 0
             },
             {
                 "content": "Good work",
                 "author": "Jasmine",
-                "id": 3
+                "id": 3,
+                "likes": 1
             }
-        ]
+        ],
+        "likes": 4
     },
     {
-        "title": "You",
-        "content": "Dozuess what",
-        "author": "Jean",
-        "date": "2023-07-04",
-        "id": 5,
-        "comments": []
-    },
-    {
-        "title": "first b9.1 post",
-        "content": "ozuess what",
-        "author": "Help",
+        "title": "This is my second post",
+        "content": "and this is my second content",
+        "author": "Sorin",
         "date": "2023-07-01",
         "id": 7,
-        "comments": []
+        "comments": [
+            {
+                "content": "Hmm is working but is like something is missing",
+                "id": 1,
+                "likes": 12
+            }
+        ],
+        "likes": 0
     },
     {
-        "id": 10,
-        "title": "You",
-        "content": "Dozuess what",
+        "id": 13,
+        "title": "This is my 3rd post",
+        "content": "and this is my 3rd content",
+        "author": "Sorin",
         "comments": [],
-        "date": "2023-07-01"
+        "date": "2023-07-03",
+        "likes": 2
+    },
+    {
+        "id": 14,
+        "title": "The 4rth",
+        "content": "Something additional to my another post!",
+        "author": "Me",
+        "comments": [],
+        "date": "2023-07-03",
+        "likes": 1
+    },
+    {
+        "title": "This is my fifth post",
+        "content": "and this is my second content",
+        "author": "Sorin",
+        "date": "2023-07-01",
+        "id": 8,
+        "comments": [
+            {
+                "content": "Hmm is working but is like something is missing",
+                "id": 1,
+                "likes": 0
+            }
+        ],
+        "likes": 1
+    },
+    {
+        "id": 15,
+        "title": "Sixth post",
+        "content": "Let's try another time to see if it is working now!",
+        "author": "Josh",
+        "comments": [],
+        "date": "2023-07-05",
+        "likes": 6
+    },
+    {
+        "id": 16,
+        "title": "7",
+        "content": "just number",
+        "author": "Digit",
+        "comments": [],
+        "date": "2023-07-05",
+        "likes": 3
     }
 ]

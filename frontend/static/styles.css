@@ -75,9 +75,9 @@ body {
 }
 
 .post button {
-    position: absolute;
+    position: flex;
     top: 10px;
-    right: 10px;
+    right: 15px;
     background-color: #ff4444;
     color: #fff;
     border: none;
@@ -86,6 +86,47 @@ body {
     cursor: pointer;
 }
 
+.post .delete-button {
+    background-color: #ff4444;
+}
+
+.post .update-button {
+    background-color: #00aa00;
+}
+
+.post .comment-button {
+    background-color: #4466ee;
+}
+
+.post button {
+
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
 .post button:hover {
-    background-color: #cc0000;
+    opacity: 0.8;
+}
+
+.save-button {
+  display: none;
+}
+
+/* CSS for the comments section */
+.comment-section {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+/* CSS for the like button */
+.like-button {
+  background-color: #eee;
+  color: #333;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
