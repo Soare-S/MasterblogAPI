@@ -238,6 +238,7 @@ def delete_comment(post_id, comment_id):
 
 @app.route('/api/posts/<int:post_id>/like', methods=['POST'])
 def update_likes(post_id):
+    """Update posts likes by their IDs"""
     posts = read_posts_from_file()
     post = find_post_by_id(post_id)
     post_index = posts.index(post)
@@ -249,6 +250,7 @@ def update_likes(post_id):
 
 @app.route('/api/posts/<int:post_id>/comments/<int:comment_id>/like', methods=['POST'])
 def update_comments_likes(post_id, comment_id):
+    """Update comments likes by their IDs"""
     posts = read_posts_from_file()
     post = find_post_by_id(post_id)
     post_index = posts.index(post)
@@ -257,7 +259,6 @@ def update_comments_likes(post_id, comment_id):
     posts[post_index] = post
     write_posts_to_file(posts)
     return jsonify({"message": f"Post liked +1"}), 200
-
 
 
 if __name__ == '__main__':
