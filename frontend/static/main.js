@@ -98,10 +98,6 @@ function searchPosts() {
             loadPosts(true);
 }
 
-function sortPosts() {
-            loadPosts('Sorting');
-}
-
 function addPost() {
     var baseUrl = document.getElementById('api-base-url').value;
     var postTitle = document.getElementById('post-title').value;
@@ -186,7 +182,6 @@ function updatePost(postId) {
     })
     .catch(error => console.error('Error:', error));
 }
-
 
 function addComment(postId) {
     var baseUrl = document.getElementById('api-base-url').value;
